@@ -1,0 +1,27 @@
+body{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden{
+    display: none;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gridDiv{
+    border: 0.12rem solid aquamarine;
+    flex: 1 1 auto;
+}
+
+.gridRowDiv{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
