@@ -1,6 +1,10 @@
+const gridContainer = document.querySelector(".container");
+const clearBtn = document.querySelector(".clearBtn");
+const colorPicker = document.querySelector(".toolbar > input")
+
 //parameter for changing grid size
 let gridSize = 16;
-const gridContainer = document.querySelector(".container");
+
 
 const fillContainer = function(){
     const gridRowDiv = document.createElement("div");
@@ -20,12 +24,29 @@ const fillContainer = function(){
 }
 
 gridContainer.addEventListener("mouseout", e =>{
+    let color = colorPicker.value;
     if(e.target.classList.contains("gridDiv")){
-        e.target.classList.add("hoveredOn");
+        e.target.style.backgroundColor = color;
     }
 })
 
 fillContainer();
+
+clearBtn.addEventListener("click", e=>{
+    gridSize= Number(document.querySelector(".inputText").value);
+    gridSize= validateInput(gridSize);
+    document.querySelector(".inputText").value = gridSize;
+    deleteGrid();
+    fillContainer();
+})
+
+
+function validateInput(input){
+    if(input<1) return 2;
+    if(input>100) return 100;
+    return input;
+
+}
 
 function deleteGrid(){
 gridContainer.querySelectorAll(".gridRowDiv").forEach(item => gridContainer.removeChild(item));
