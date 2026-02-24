@@ -10,8 +10,24 @@
     <div class="header">
       <h1>Etch a Sketch</h1>
     </div>
-    <div class="popup hidden"></div>
-    <div class="container"></div>
+
+    <div class="background">
+      <div class="popup hidden"></div>
+      <div class="inputSection">
+        <label>Size:</label>
+        <input
+          class="inputText"
+          type="number"
+          value="16"
+          placeholder="Size"
+          min="1"
+          max="100"
+        />
+        <button class="clearBtn">Clear</button>
+      </div>
+
+      <div class="container"></div>
+    </div>
     <div class="footer"></div>
     <script src="etchASketch.js"></script>
   </body>
