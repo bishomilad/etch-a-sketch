@@ -11,6 +11,7 @@ let rainbow = false;
 let holding=false;
 let gridlines=true;
 let erasing=false;
+const audio = new Audio("./media/sheetSound.mp3");
 
 const fillContainer = function(){
     const gridRowDiv = document.createElement("div");
@@ -55,10 +56,13 @@ toolbar.addEventListener("click", e=>{
 
 document.addEventListener("mousedown", ()=>{
     holding=true;
+    audio.play();
+
 })
 
 document.addEventListener("mouseup", () =>{
     holding=false;
+    audio.pause();
 })
 
 gridContainer.addEventListener("mouseover", e =>{
