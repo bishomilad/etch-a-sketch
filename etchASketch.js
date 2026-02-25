@@ -75,6 +75,12 @@ function randomNumber(N){
     return Math.floor(Math.random()*(N+1));
 }
 
+function toggleGridLines(){
+    //iterate through grid divs and toggle the gridLine class
+    gridContainer.querySelectorAll(".gridDiv").forEach(item => item.classList.toggle("gridLine"));
+
+}
+
 function deleteGrid(){
     //deletes row by row of grid divs
     gridContainer.querySelectorAll(".gridRowDiv").forEach(item => gridContainer.removeChild(item));
