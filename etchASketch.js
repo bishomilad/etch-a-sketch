@@ -31,9 +31,11 @@ const fillContainer = function(){
 toolbar.addEventListener("click", e=>{
     switch(e.target.id){
         case "rainbow":
+            e.target.classList.toggle("buttonToggled");
             rainbow=!rainbow;
             break;
         case "grid":
+            e.target.classList.toggle("buttonToggled");
             toggleGridLines();
             break;
             
