@@ -16,6 +16,7 @@ const fillContainer = function(){
     for(let i=0;i<gridSize;i++){
         const gridDiv = document.createElement("div");
         gridDiv.classList.add("gridDiv");
+        gridDiv.classList.add("gridLine");
         gridRowDiv.appendChild(gridDiv);
     }
     //cloning that row each iteration
@@ -31,6 +32,9 @@ toolbar.addEventListener("click", e=>{
     switch(e.target.id){
         case "rainbow":
             rainbow=!rainbow;
+            break;
+        case "grid":
+            toggleGridLines();
             break;
             
     }
@@ -74,6 +78,11 @@ function randomNumber(N){
 function deleteGrid(){
     //deletes row by row of grid divs
     gridContainer.querySelectorAll(".gridRowDiv").forEach(item => gridContainer.removeChild(item));
+}
+
+function toggleGridLines(){
+    gridContainer.querySelectorAll(".gridDiv").forEach(item => item.classList.toggle("gridLine"));
+
 }
 
 fillContainer();

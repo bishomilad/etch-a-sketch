@@ -85,10 +85,13 @@ h1{
 }
 
 .gridDiv{
-    border: 0.002rem solid rgba(195, 194, 196, 0.349);
     flex: 1 1 auto;
     max-height: fit-content;
     aspect-ratio: 1/1;
+}
+
+.gridLine{
+    border: 0.002rem solid rgba(195, 194, 196, 0.349);
 }
 
 .gridRowDiv{
@@ -137,4 +140,9 @@ h1{
     height: 2.4rem;
     font-size: 1.3rem;;
     padding: 0.3rem;
+}
+
+.toolbar{
+    flex: 1 1 auto;
+    width: 15%;
 }
