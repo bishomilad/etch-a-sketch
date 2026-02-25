@@ -10,6 +10,7 @@ let gridSize = 16;
 let rainbow = false;
 let holding=false;
 let gridlines=true;
+let erasing=false;
 
 const fillContainer = function(){
     const gridRowDiv = document.createElement("div");
@@ -33,8 +34,8 @@ const fillContainer = function(){
 toolbar.addEventListener("click", e=>{
     switch(e.target.id){
         case "rainbow":
-            e.target.classList.toggle("buttonToggled");
             rainbow=!rainbow;
+            e.target.classList.toggle("buttonToggled");
             break;
         case "grid":
             gridlines=!gridlines;
@@ -43,6 +44,11 @@ toolbar.addEventListener("click", e=>{
             break;
         case "camera":
             takePhoto();
+            break;
+        case "eraser":
+            erasing=!erasing;
+            e.target.classList.toggle("buttonToggled");
+            
             
     }
 })
@@ -66,6 +72,7 @@ gridContainer.addEventListener("mousedown", e =>{
 
 function paint(e, condition =true){
     let color = rainbow? randomColor() : colorPicker.value;
+    if(erasing) color="transparent";
     if(condition && e.target.classList.contains("gridDiv")){
         e.target.style.backgroundColor = color; //changes the color of the square
         //e.target.style.opacity = +e.target.style.opacity + 0.1; //cancelled feature (looked unappealing)
@@ -73,15 +80,16 @@ function paint(e, condition =true){
 }
 
 function takePhoto(){
-    html2canvas(document.querySelector(".container")).then(canvas => {
-  document.body.appendChild(canvas);
-});
-    html2canvas(document.querySelector(".container")).then(canvas =>{
-        const dataUrl = canvas.toDataURL("image/png");
-        const newTab = window.open(dataUrl, '_blank');
-         if (newTab) {
-            newTab.focus();
-        }
+    html2canvas(gridContainer).then(canvas => {
+        // Convert the canvas to a data URL
+        const imageDataUrl = canvas.toDataURL('image/png');
+        // Create a temporary anchor element
+        const link = document.createElement('a');
+        link.setAttribute('download', 'sketch.png');
+        link.setAttribute('href', imageDataUrl);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     });
 }
 
