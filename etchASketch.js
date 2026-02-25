@@ -40,14 +40,30 @@ toolbar.addEventListener("click", e=>{
     }
 })
 
+document.addEventListener("mousedown", ()=>{
+    holding=true;
+})
+
+document.addEventListener("mouseup", () =>{
+    holding=false;
+})
+
 gridContainer.addEventListener("mouseover", e =>{
+    paint(e, holding===true);
+})
+
+gridContainer.addEventListener("mousedown", e =>{
+    paint(e);
+})
+
+
+function paint(e, condition =true){
     let color = rainbow? randomColor() : colorPicker.value;
-    if(e.target.classList.contains("gridDiv")){
+    if(condition && e.target.classList.contains("gridDiv")){
         e.target.style.backgroundColor = color; //changes the color of the square
         //e.target.style.opacity = +e.target.style.opacity + 0.1; //cancelled feature (looked unappealing)
     }
-})
-
+}
 
 clearBtn.addEventListener("click", e=>{
     //gets the new grid size
