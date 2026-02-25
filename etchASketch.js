@@ -81,6 +81,7 @@ function deleteGrid(){
 }
 
 function toggleGridLines(){
+    //iterate through grid divs and toggle the gridLine class
     gridContainer.querySelectorAll(".gridDiv").forEach(item => item.classList.toggle("gridLine"));
 
 }
