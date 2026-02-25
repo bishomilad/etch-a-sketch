@@ -163,13 +163,3 @@ h1{
     background-color: antiquewhite;
     font-weight: 900;
 }
-
-.socialIcon{
-    width: 1.2rem;
-    height: auto;
-    transition: 0.5s ease-in-out;
-}
-
-.socialIcon:hover{
-    transform: rotate(1.2turn) scale(1.3);
-}
