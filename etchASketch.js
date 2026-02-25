@@ -1,3 +1,4 @@
+
 const gridContainer = document.querySelector(".container");
 const clearBtn = document.querySelector(".clearBtn");
 const colorPicker = document.querySelector(".toolbar > input")
@@ -8,6 +9,7 @@ const toolbar = document.querySelector(".toolbar");
 let gridSize = 16;
 let rainbow = false;
 let holding=false;
+let gridlines=true;
 
 const fillContainer = function(){
     const gridRowDiv = document.createElement("div");
@@ -35,9 +37,12 @@ toolbar.addEventListener("click", e=>{
             rainbow=!rainbow;
             break;
         case "grid":
+            gridlines=!gridlines;
             e.target.classList.toggle("buttonToggled");
             toggleGridLines();
             break;
+        case "camera":
+            takePhoto();
             
     }
 })
@@ -67,6 +72,19 @@ function paint(e, condition =true){
     }
 }
 
+function takePhoto(){
+    html2canvas(document.querySelector(".container")).then(canvas => {
+  document.body.appendChild(canvas);
+});
+    html2canvas(document.querySelector(".container")).then(canvas =>{
+        const dataUrl = canvas.toDataURL("image/png");
+        const newTab = window.open(dataUrl, '_blank');
+         if (newTab) {
+            newTab.focus();
+        }
+    });
+}
+
 clearBtn.addEventListener("click", e=>{
     //gets the new grid size
     gridSize= Number(document.querySelector(".inputText").value);
@@ -76,6 +94,7 @@ clearBtn.addEventListener("click", e=>{
     //delete the old elements to make up space for the new elements
     deleteGrid();
     fillContainer();
+    if(!gridlines) toggleGridLines();
 })
 
 function validateInput(input){

@@ -144,6 +144,7 @@ h1{
     height: 2.4rem;
     font-size: 1.3rem;;
     padding: 0.3rem;
+    transition: 0.5s ease-in-out;
 }
 
 .toolbar{
@@ -153,12 +154,22 @@ h1{
     flex-direction: column;
 }
 
-.toolbar button:active .toolbar input:active{
+.toolbar button:hover, .toolbar input:hover{
     background-color: antiquewhite;
-    transition: 0.1s ease-in-out;
+    transition: 0.5s ease-in-out 0.05s;
 }
 
 .toolbar .buttonToggled{
     background-color: antiquewhite;
     font-weight: 900;
+}
+
+.socialIcon{
+    width: 1.2rem;
+    height: auto;
+    transition: 0.5s ease-in-out;
+}
+
+.socialIcon:hover{
+    transform: rotate(1.2turn) scale(1.3);
 }
