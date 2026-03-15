@@ -1,6 +1,7 @@
 # Etch a Sketch
 
 The fourth project of **[The Odin Project](https://www.theodinproject.com/)** Etch-a-Sketch web app, where you can draw on a resizable grid and save it.
+You can try it **[here](https://bishomilad.github.io/etch-a-sketch/)**
 ![Etch and sketch drawn by the app](./media/Sketch.png)
 
 ## Features
